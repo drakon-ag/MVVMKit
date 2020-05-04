@@ -37,19 +37,15 @@ open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewCon
         }
     }
     
-    // MARK: - CustomViewModelConfigurable
-    
-    public typealias CustomViewModel = ViewModelType
-    
     /// Override this method to bind your view model to the view
     open func bind(viewModel: ViewModelType) {
         
     }
     
     /**
-     The view controller view model
+     The view controller's view model
      */
-    open var viewModel: ViewModelType? {
+    open var viewModel: ViewModelType! {
         /*
             The cast isn't really needed here, but for some reason the compiler won't build without it.
             This issue doesn't seem to affect subclasses.
@@ -223,10 +219,12 @@ open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewCon
     
     // MARK: - Swipe Actions
     
+    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return nil
     }
     
+    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return nil
     }

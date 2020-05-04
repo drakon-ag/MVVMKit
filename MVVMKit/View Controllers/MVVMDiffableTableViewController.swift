@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+#if canImport(Combine)
+
 import UIKit
 import Combine
 
@@ -31,15 +33,20 @@ import Combine
  */
 @available(iOS 13.0, *)
 open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewModel>: UIViewController, ViewModelOwner, UITableViewDelegate {
-    public typealias CustomViewModel = ViewModelType
+    public typealias ViewModelType = ViewModelType
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet { tableView.delegate = self }
     }
-    public var viewModel: ViewModelType? {
+    public var viewModel: ViewModelType! {
         didSet { bindIfViewLoaded() }
     }
-    public private(set) var dataSource: UITableViewDiffableDataSource<ViewModelType.SectionType, ReusableViewViewModelAdapter>!
+    public private(set) var dataSource: MVVMTableViewDiffableDataSource<ViewModelType.SectionType>!
+    
+    /// The type of the instanciated `MVVMTableViewDiffableDataSource`. A custom data source can be provided overriding this property.
+    open class var dataSourceType: MVVMTableViewDiffableDataSource<ViewModelType.SectionType>.Type {
+        MVVMTableViewDiffableDataSource<ViewModelType.SectionType>.self
+    }
     
     private var dataSourceSubscription: AnyCancellable?
     
@@ -50,7 +57,7 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     open func bind(viewModel: ViewModelType) {
-        dataSourceSubscription = viewModel.snapshotPublisher
+        dataSourceSubscription = viewModel.snapshot
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
                 self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
@@ -58,7 +65,7 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     private func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView) { [weak self] (collectionView, indexPath, adapter) -> UITableViewCell? in
+        dataSource = Self.dataSourceType.init(tableView: tableView) { [weak self] (collectionView, indexPath, adapter) -> UITableViewCell? in
             guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withIdentifier: adapter.reusableViewViewModel.identifier, for: indexPath)
             self.configureDelegate(of: cell)
@@ -124,9 +131,9 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     // Section header & footer information
     
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let section = self.dataSource.snapshot().sectionIdentifiers[section]
+        let sectionInstance = self.dataSource.snapshot().sectionIdentifiers[section]
         guard
-            let headerViewModel = section.headerViewModel,
+            let headerViewModel = viewModel?.headerViewModel(for: sectionInstance, at: section),
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerViewModel.identifier)
             else { return nil }
         
@@ -136,9 +143,9 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let section = self.dataSource.snapshot().sectionIdentifiers[section]
+        let sectionInstance = self.dataSource.snapshot().sectionIdentifiers[section]
         guard
-            let footerViewModel = section.footerViewModel,
+            let footerViewModel = viewModel?.footerViewModel(for: sectionInstance, at: section),
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerViewModel.identifier)
             else { return nil }
         
@@ -261,3 +268,5 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
         
     }
 }
+
+#endif

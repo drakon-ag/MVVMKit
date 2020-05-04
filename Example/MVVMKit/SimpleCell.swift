@@ -32,11 +32,6 @@ struct SimpleCellViewModel: ReusableViewViewModel {
 class SimpleCell: UICollectionViewCell, CustomBinder {
     @IBOutlet private weak var titleLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        backgroundColor = .random
-    }
-    
     func bind(viewModel: SimpleCellViewModel) {
         titleLabel.text = viewModel.text
     }

@@ -1,7 +1,7 @@
 /*
- DiffableViewModel+Coordinator.swift
+ BadgeReusableView.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +22,25 @@
  THE SOFTWARE.
  */
 
-#if canImport(Combine)
+import MVVMKit
 
-/// A view model for the view of a view controller. The protocol is intended to be conformed by Combine publishing view models.
-@available(iOS 13.0, *)
-public typealias CoordinatedReactiveViewModel = ReferenceViewModel & CoordinatorOwner
+struct BadgeReusableViewViewModel: ReusableViewViewModel {
+    let identifier: String = BadgeReusableView.identifier
+    let isVisible: Bool
+    let text: String?
+}
 
-/// A table view view model that delegates the navigation responsibility to a coordinator
-@available(iOS 13.0, *)
-public typealias CoordinatedDiffableTableViewViewModel = DiffableCollectionViewViewModel & CoordinatorOwner
-
-/// A collection view view model that delegates the navigation responsibility to a coordinator
-@available(iOS 13.0, *)
-public typealias CoordinatedDiffableCollectionViewViewModel = DiffableTableViewViewModel & CoordinatorOwner
-
-#endif
+class BadgeReusableView: UICollectionReusableView, CustomBinder {
+    typealias ViewModelType = BadgeReusableViewViewModel
+    @IBOutlet private weak var label: UILabel!
+    
+    func bind(viewModel: BadgeReusableViewViewModel) {
+        label.text = viewModel.text
+        isHidden = !viewModel.isVisible
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = min(bounds.height/2, bounds.width/2)
+    }
+}

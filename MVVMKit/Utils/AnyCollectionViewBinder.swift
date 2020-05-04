@@ -24,22 +24,22 @@
 
 private class AnyCollectionViewBinderBase<V: CollectionViewViewModel>: CollectionViewBinder {
     func bind(viewModel: V) { }
-    func bind(viewModel: V, update: CollectionViewUpdate?) { }
+    func bind(viewModel: V, update: CollectionViewUpdate) { }
 }
 
-private final class AnyCollectionViewBinderBox<B: CollectionViewBinder>: AnyCollectionViewBinderBase<B.CustomViewModel> {
+private final class AnyCollectionViewBinderBox<B: CollectionViewBinder>: AnyCollectionViewBinderBase<B.ViewModelType> {
     weak var base: B?
     
     init(_ base: B) {
         self.base = base
     }
     
-    override func bind(viewModel: B.CustomViewModel) {
+    override func bind(viewModel: B.ViewModelType) {
         base?.bind(viewModel: viewModel)
     }
     
-    override func bind(viewModel: B.CustomViewModel, update viewChange: CollectionViewUpdate?) {
-        base?.bind(viewModel: viewModel, update: viewChange)
+    override func bind(viewModel: B.ViewModelType, update: CollectionViewUpdate) {
+        base?.bind(viewModel: viewModel, update: update)
     }
 }
 
@@ -50,7 +50,7 @@ The type erasure of `CollectionViewBinder`.
 public final class AnyCollectionViewBinder<V: CollectionViewViewModel>: CollectionViewBinder {
     private let box: AnyCollectionViewBinderBase<V>
     
-    public init<B: CollectionViewBinder>(_ binder: B) where B.CustomViewModel == V {
+    public init<B: CollectionViewBinder>(_ binder: B) where B.ViewModelType == V {
         box = AnyCollectionViewBinderBox(binder)
     }
     
@@ -58,7 +58,7 @@ public final class AnyCollectionViewBinder<V: CollectionViewViewModel>: Collecti
         box.bind(viewModel: viewModel)
     }
     
-    public func bind(viewModel: V, update: CollectionViewUpdate?) {
+    public func bind(viewModel: V, update: CollectionViewUpdate) {
         box.bind(viewModel: viewModel, update: update)
     }
 }

@@ -1,5 +1,5 @@
 /*
- DiffableTableViewController.swift
+ SearchTableViewController.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -24,19 +24,14 @@
 
 import MVVMKit
 
-class DiffableTableViewController: MVVMDiffableTableViewController<DiffableTableViewModel> {
+class SearchTableViewController: MVVMDiffableTableViewController<SearchTableViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         dataSource.defaultRowAnimation = .fade
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel?.loadData()
-    }
-    
-    override func bind(viewModel: DiffableTableViewModel) {
+    override func bind(viewModel: SearchTableViewModel) {
         super.bind(viewModel: viewModel)
     }
     
@@ -58,7 +53,7 @@ class DiffableTableViewController: MVVMDiffableTableViewController<DiffableTable
     }
 }
 
-extension DiffableTableViewController: UISearchBarDelegate {
+extension SearchTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel?.searchTextDidChange(searchText: searchText)
     }

@@ -1,7 +1,7 @@
 /*
- CoordinatedDelegatingViewModel.swift
+ EmbedderCoordinator.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,14 @@
  THE SOFTWARE.
  */
 
-/// A view model that delegates the navigation responsibility to a coordinator
-public typealias CoordinatedBaseDelegatingViewModel = BaseDelegatingViewModel & CoordinatorOwner
+import UIKit
 
-/// A table view view model that delegates the navigation responsibility to a coordinator
-public typealias CoordinatedTableViewViewModel = TableViewViewModel & CoordinatorOwner
+/// A protocol to coordinate embedding in custom container view controllers
+public protocol EmbedderCoordinator: Coordinator where ViewController: ContainerViewProvider { }
 
-/// A collection view view model that delegates the navigation responsibility to a coordinator
-public typealias CoordinatedCollectionViewViewModel = CollectionViewViewModel & CoordinatorOwner
+/// A protocol for a type providing container views by kind
+public protocol ContainerViewProvider: UIViewController {
+    associatedtype ContainerViewKind: Hashable
+    
+    func view(for kind: ContainerViewKind) -> UIView?
+}

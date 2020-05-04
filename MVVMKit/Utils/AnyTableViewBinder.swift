@@ -24,22 +24,22 @@
 
 private class AnyTableViewBinderBase<V: TableViewViewModel>: TableViewBinder {
     func bind(viewModel: V) { }
-    func bind(viewModel: V, update: TableViewUpdate?) { }
+    func bind(viewModel: V, update: TableViewUpdate) { }
 }
 
-private final class AnyTableViewBinderBox<B: TableViewBinder>: AnyTableViewBinderBase<B.CustomViewModel> {
+private final class AnyTableViewBinderBox<B: TableViewBinder>: AnyTableViewBinderBase<B.ViewModelType> {
     weak var base: B?
     
     init(_ base: B) {
         self.base = base
     }
     
-    override func bind(viewModel: B.CustomViewModel) {
+    override func bind(viewModel: B.ViewModelType) {
         base?.bind(viewModel: viewModel)
     }
     
-    override func bind(viewModel: B.CustomViewModel, update viewChange: TableViewUpdate?) {
-        base?.bind(viewModel: viewModel, update: viewChange)
+    override func bind(viewModel: B.ViewModelType, update: TableViewUpdate) {
+        base?.bind(viewModel: viewModel, update: update)
     }
 }
 
@@ -50,7 +50,7 @@ The type erasure of `TableViewBinder`.
 public final class AnyTableViewBinder<V: TableViewViewModel>: TableViewBinder {
     private let box: AnyTableViewBinderBase<V>
     
-    public init<B: TableViewBinder>(_ binder: B) where B.CustomViewModel == V {
+    public init<B: TableViewBinder>(_ binder: B) where B.ViewModelType == V {
         box = AnyTableViewBinderBox(binder)
     }
     
@@ -58,7 +58,7 @@ public final class AnyTableViewBinder<V: TableViewViewModel>: TableViewBinder {
         box.bind(viewModel: viewModel)
     }
     
-    public func bind(viewModel: V, update: TableViewUpdate?) {
+    public func bind(viewModel: V, update: TableViewUpdate) {
         box.bind(viewModel: viewModel, update: update)
     }
 }

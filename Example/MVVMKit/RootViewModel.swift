@@ -24,7 +24,7 @@
 
 import MVVMKit
 
-class RootViewModel: CoordinatedBaseDelegatingViewModel {
+class RootViewModel: DelegatingViewModel, CoordinatedViewModel {
     typealias CoordinatorType = RootCoordinator
     var binder: AnyBinder<RootViewModel>?
     var coordinator: RootCoordinator
