@@ -22,7 +22,7 @@ final class AdvancedSnapshotingViewController: MVVMDiffableCollectionViewControl
     }
 
     private func setupCollectionView() {
-        collectionView.register(SimpleCell.nib, forCellWithReuseIdentifier: SimpleCell.identifier)
+        collectionView.register(AdvancedSnapshotingCell.self, forCellWithReuseIdentifier: AdvancedSnapshotingCell.identifier)
     }
 }
 

@@ -36,7 +36,7 @@ final class AdvancedSnapshotingViewModel: DiffableCollectionViewViewModel {
         snapshotSubject.send(snapshot.adapted())
 
         let viewModels = model.map {
-            SimpleCellViewModel(text: $0)
+            AdvancedSnapshotingCellViewModel(text: $0)
                 .adapted(hashable: $0)
         }
 
