@@ -59,4 +59,12 @@ class RootViewModel: DelegatingViewModel, CoordinatedViewModel {
     func didSelectDiffableTableViewController() {
         coordinator.didSelectDiffableTableViewController()
     }
+
+    func didSelectAdvancedSnapshoting() {
+        if #available(iOS 14.0, *) {
+            coordinator.didSelectAdvancedSnapshoting()
+        } else {
+            #warning("Show alert")
+        }
+    }
 }

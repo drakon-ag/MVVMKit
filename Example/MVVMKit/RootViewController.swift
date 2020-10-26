@@ -55,4 +55,8 @@ class RootViewController: UIViewController, ViewModelOwner {
     @IBAction func didTapDiffableTableViewController(_ sender: UIButton) {
         viewModel?.didSelectDiffableTableViewController()
     }
+
+    @IBAction func advancedSnapshoting(_ sender: UIButton) {
+        viewModel?.didSelectAdvancedSnapshoting()
+    }
 }

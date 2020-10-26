@@ -10,6 +10,8 @@
 		2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E934B24083764001373AB /* BadgeReusableView.swift */; };
 		2D0E934E24083764001373AB /* BadgeReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E934C24083764001373AB /* BadgeReusableView.xib */; };
 		2D12AFF5240C1DA4009946EE /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D12AFF4240C1DA4009946EE /* Collection+.swift */; };
+		2D1AF0A22547547200DE25A5 /* AdvancedSnapshotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AF09F2547547200DE25A5 /* AdvancedSnapshotingViewController.swift */; };
+		2D1AF0A32547547200DE25A5 /* AdvancedSnapshotingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AF0A02547547200DE25A5 /* AdvancedSnapshotingViewModel.swift */; };
 		2D5385EE245B38BB00F48336 /* GiphyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5385ED245B38BB00F48336 /* GiphyDetailViewController.swift */; };
 		2D5385F0245B394F00F48336 /* GiphyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5385EF245B394F00F48336 /* GiphyDetailViewModel.swift */; };
 		2D78AD4923A6504700797910 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4823A6504700797910 /* SearchTableViewController.swift */; };
@@ -60,6 +62,8 @@
 		2D0E934B24083764001373AB /* BadgeReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeReusableView.swift; sourceTree = "<group>"; };
 		2D0E934C24083764001373AB /* BadgeReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeReusableView.xib; sourceTree = "<group>"; };
 		2D12AFF4240C1DA4009946EE /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		2D1AF09F2547547200DE25A5 /* AdvancedSnapshotingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSnapshotingViewController.swift; sourceTree = "<group>"; };
+		2D1AF0A02547547200DE25A5 /* AdvancedSnapshotingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSnapshotingViewModel.swift; sourceTree = "<group>"; };
 		2D5385ED245B38BB00F48336 /* GiphyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyDetailViewController.swift; sourceTree = "<group>"; };
 		2D5385EF245B394F00F48336 /* GiphyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyDetailViewModel.swift; sourceTree = "<group>"; };
 		2D78AD4823A6504700797910 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 				572F3FF8A75EF87844ABC556 /* Pods-MVVMKit_Example.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2D1AF0A52547548000DE25A5 /* AdvancedSnapshoting */ = {
+			isa = PBXGroup;
+			children = (
+				2D1AF09F2547547200DE25A5 /* AdvancedSnapshotingViewController.swift */,
+				2D1AF0A02547547200DE25A5 /* AdvancedSnapshotingViewModel.swift */,
+			);
+			name = AdvancedSnapshoting;
 			sourceTree = "<group>";
 		};
 		2D78AD4C23A650A000797910 /* DiffableTableViewController */ = {
@@ -266,6 +279,7 @@
 				2D78AD4C23A650A000797910 /* DiffableTableViewController */,
 				C06A69F021BE82110015D82F /* GiphyMasterDetailViewController */,
 				C0A15A6B21BBC58300A499C5 /* GiphyViewController */,
+				2D1AF0A52547548000DE25A5 /* AdvancedSnapshoting */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 				C075789A223A4C0B0054F59A /* RootCoordinator.swift in Sources */,
 				2D5385F0245B394F00F48336 /* GiphyDetailViewModel.swift in Sources */,
 				C0A15A6621BBC25300A499C5 /* UIImage+.swift in Sources */,
+				2D1AF0A32547547200DE25A5 /* AdvancedSnapshotingViewModel.swift in Sources */,
 				C0F340DA21B5E7CF00DDE19E /* RootViewController.swift in Sources */,
 				2D78AD4923A6504700797910 /* SearchTableViewController.swift in Sources */,
 				C0A15A6321BBBED300A499C5 /* GiphyResponses.swift in Sources */,
@@ -481,6 +496,7 @@
 				2DAA5F7923A6889100EFF2BF /* TableHeaderView.swift in Sources */,
 				C0F340D521B5E4B500DDE19E /* BasicViewController.swift in Sources */,
 				C012C09F2238FBFB00BD5549 /* RootViewModel.swift in Sources */,
+				2D1AF0A22547547200DE25A5 /* AdvancedSnapshotingViewController.swift in Sources */,
 				C012C0A32238FEA700BD5549 /* UIViewController+.swift in Sources */,
 				2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */,
 				C06A69EE21BE820C0015D82F /* GiphyMasterDetailViewController.swift in Sources */,

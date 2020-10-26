@@ -67,4 +67,11 @@ class RootCoordinator: Coordinator {
         viewController.viewModel = SearchTableViewModel()
         self.viewController?.show(viewController, sender: nil)
     }
+
+    @available(iOS 14.0, *)
+    func didSelectAdvancedSnapshoting() {
+        let viewController = AdvancedSnapshotingViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = AdvancedSnapshotingViewModel()
+        self.viewController?.show(viewController, sender: nil)
+    }
 }
