@@ -25,6 +25,14 @@
 import MVVMKit
 import Combine
 
+#warning("Delete")
+@available(iOS 14.0, *)
+extension SearchCollectionViewModel {
+    var sectionSnapshot: AnyPublisher<SectionSnapshotAdapter, Never> {
+        Empty<SectionSnapshotAdapter, Never>().eraseToAnyPublisher()
+    }
+}
+
 class SearchCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     

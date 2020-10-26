@@ -36,8 +36,15 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
+
+    @available(iOS 14.0, *)
+    typealias SectionSnapshotAdapter = SectionSnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
     var snapshot: AnyPublisher<SnapshotAdapter, Never> { get }
+    
+    @available(iOS 14.0, *)
+    var sectionSnapshot: AnyPublisher<SectionSnapshotAdapter, Never> { get }
+
     func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
 }
 
@@ -45,6 +52,14 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
 public extension DiffableCollectionViewViewModel {
     func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
         nil
+    }
+}
+
+#warning("Don't working")
+@available(iOS 14.0, *)
+extension DiffableCollectionViewViewModel {
+    var sectionSnapshot: AnyPublisher<SectionSnapshotAdapter, Never> {
+        Empty<SectionSnapshotAdapter, Never>().eraseToAnyPublisher()
     }
 }
 

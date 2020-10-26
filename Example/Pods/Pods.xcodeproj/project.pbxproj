@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -30,6 +31,7 @@
 		28A8C60549B3DCB657DBE2458A351146 /* MVVMDiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2033A175B2DEFCEDB17342251064B /* MVVMDiffableCollectionViewController.swift */; };
 		2992BCF38312C2E3B8E0BBD2751802ED /* Delegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CE8A70F6518DDE1EDFD6A501BECB64 /* Delegator.swift */; };
 		2CE5EBA596EE6CE85F244D710C51F9C9 /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9FD4039E0E0288757C5055733B0864 /* DispatchQueue+.swift */; };
+		2D28F3EA2547376D006A2312 /* SectionSnapshotUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D28F3E92547376D006A2312 /* SectionSnapshotUpdate.swift */; };
 		37C87373EF29B4F2DDA3C2D764794D25 /* Pods-MVVMKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6FD8613AA9C07EA5463DBC72DDD3AD7 /* Pods-MVVMKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B078E99BC19ED4DE088BF2E27B89AB3 /* MVVMKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A9834B02B32CCC117E7B4C853FE71B6 /* MVVMKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43E82FABF21782D613EA7E5032806144 /* AnyCollectionViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D6E541BD44407818D8514B07327A7D /* AnyCollectionViewBinder.swift */; };
@@ -79,13 +81,14 @@
 /* Begin PBXFileReference section */
 		04805B82C1A2155D2B959B35DCC12E50 /* MVVMCollectionViewDiffableDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMCollectionViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		0D2881D3ACBC944962C0968356F98AF9 /* ViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		0D47B55DF1922664542BCE3B2B05FCA5 /* MVVMKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MVVMKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0D47B55DF1922664542BCE3B2B05FCA5 /* MVVMKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MVVMKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1487E384B55A850AF58AE12A39459D3A /* MVVMKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MVVMKit-Info.plist"; sourceTree = "<group>"; };
 		14D310B290760BE094038660D1D00327 /* MVVMKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MVVMKit-prefix.pch"; sourceTree = "<group>"; };
 		19DA91BC2DD4D95ABDD6D9A4319585AB /* CollectionViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewViewModel.swift; sourceTree = "<group>"; };
 		1C689CFD39196A6F2BD89F396EFA2EFA /* MVVMKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MVVMKit.release.xcconfig; sourceTree = "<group>"; };
 		2437F0ECE97ABC1D213F1B96CEF3465A /* MVVMDiffableCollectionViewController+CompositionalLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MVVMDiffableCollectionViewController+CompositionalLayout.swift"; sourceTree = "<group>"; };
 		27189C6457CC3652BA8F04FA0D59628F /* Pods-MVVMKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MVVMKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		2D28F3E92547376D006A2312 /* SectionSnapshotUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSnapshotUpdate.swift; sourceTree = "<group>"; };
 		31D2C3840467104B78868557BAC15205 /* AnyTableViewBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnyTableViewBinder.swift; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3812F98B775E0C793D1CFFAB498A701B /* AnyBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnyBinder.swift; sourceTree = "<group>"; };
@@ -97,10 +100,10 @@
 		43491BE621047AE8F75A22F296A9F1E5 /* BaseDelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseDelegatingViewModel.swift; sourceTree = "<group>"; };
 		4747E4FC51E0B20D769BB0F7E49465D4 /* MVVMCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMCollectionViewController.swift; sourceTree = "<group>"; };
 		56CE8A70F6518DDE1EDFD6A501BECB64 /* Delegator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Delegator.swift; sourceTree = "<group>"; };
-		59C249E899BE4FFEA0819887040457DB /* MVVMKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MVVMKit.framework; path = MVVMKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59C249E899BE4FFEA0819887040457DB /* MVVMKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MVVMKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE1F5C48FCDE4467EFC22996E03805E /* MVVMKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MVVMKit.modulemap; sourceTree = "<group>"; };
 		62A2033A175B2DEFCEDB17342251064B /* MVVMDiffableCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMDiffableCollectionViewController.swift; sourceTree = "<group>"; };
-		64C51EF9DD991EB2FEF6F9718453D80C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		64C51EF9DD991EB2FEF6F9718453D80C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		66F37C89F5632B99C298B5AF104C2028 /* Pods-MVVMKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MVVMKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6724EBF01EC433FE9C835FA21D00A424 /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		695AAFB9D912BBBECD1F2BA197B17E84 /* WeakReference.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeakReference.swift; sourceTree = "<group>"; };
@@ -111,18 +114,18 @@
 		7733A04B0CE71A3116396997945CB851 /* DelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelegatingViewModel.swift; sourceTree = "<group>"; };
 		779A0FA425A8B17860283315CF31A3BE /* CoordinatedViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedViewModel.swift; sourceTree = "<group>"; };
 		7A3E0765E710F2D299149B6EE7709754 /* MVVMTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMTableViewController.swift; sourceTree = "<group>"; };
-		7A7C5A94AB579D03E2C364021E109ED2 /* Pods_MVVMKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MVVMKit_Example.framework; path = "Pods-MVVMKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7C5A94AB579D03E2C364021E109ED2 /* Pods_MVVMKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
 		8715969F1A683F41506203EE3EFA754C /* EmbedderCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmbedderCoordinator.swift; sourceTree = "<group>"; };
 		8AD6AB5893874199C529CAA9FACFE7A7 /* DiffableTableViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DiffableTableViewViewModel.swift; sourceTree = "<group>"; };
 		9882907CF9F7E7DAD75498FDEAFC9AE7 /* Binder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
 		9A0124F2A452B2806AE955FD728A2E56 /* Pods-MVVMKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MVVMKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D4CA2F095C511C7C2762ACE2313F5B3 /* SnapshotUpdate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotUpdate.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AF1738B34B41CED13134EC61D8253636 /* ReusableViewViewModelAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReusableViewViewModelAdapter.swift; sourceTree = "<group>"; };
 		B74FD26F535C78C2F476F48B1724C49D /* TableViewViewModelOwner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewViewModelOwner.swift; sourceTree = "<group>"; };
 		BCAE6E096E9CDB49533F822E67C4CAD7 /* DiffableCollectionViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewViewModel.swift; sourceTree = "<group>"; };
-		C4D17BC0BBF100EE1AD6E9B2DFAEC1FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		C4D17BC0BBF100EE1AD6E9B2DFAEC1FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C6FD8613AA9C07EA5463DBC72DDD3AD7 /* Pods-MVVMKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MVVMKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		CE6AF4F6F4AB74EE012D851FEAFC02B6 /* Pods-MVVMKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MVVMKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D1A0D04AE8BB0A9ABDF95B12D040D754 /* UIViewController+MVVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+MVVM.swift"; sourceTree = "<group>"; };
@@ -185,7 +188,6 @@
 				04805B82C1A2155D2B959B35DCC12E50 /* MVVMCollectionViewDiffableDataSource.swift */,
 				6CF300253FE007DDED2963E53E616A1B /* MVVMTableViewDiffableDataSource.swift */,
 			);
-			name = "Data Sources";
 			path = "Data Sources";
 			sourceTree = "<group>";
 		};
@@ -205,7 +207,6 @@
 				DDFC7BC125BB38B276574321319C4034 /* SectionViewModel.swift */,
 				F3D16D4C9624BBD351DE549DB36860EB /* TableViewViewModel.swift */,
 			);
-			name = "Container View Models";
 			path = "Container View Models";
 			sourceTree = "<group>";
 		};
@@ -217,7 +218,6 @@
 				FF134DCBDF9FA60DB96532A10207E9EE /* Delegate */,
 				E28AB777FA1CEE7154DF385B5F1B2667 /* Diffable Container View Models */,
 			);
-			name = "View Model";
 			path = "View Model";
 			sourceTree = "<group>";
 		};
@@ -351,7 +351,6 @@
 			children = (
 				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -361,9 +360,9 @@
 				BCAE6E096E9CDB49533F822E67C4CAD7 /* DiffableCollectionViewViewModel.swift */,
 				8AD6AB5893874199C529CAA9FACFE7A7 /* DiffableTableViewViewModel.swift */,
 				AF1738B34B41CED13134EC61D8253636 /* ReusableViewViewModelAdapter.swift */,
+				2D28F3E92547376D006A2312 /* SectionSnapshotUpdate.swift */,
 				9D4CA2F095C511C7C2762ACE2313F5B3 /* SnapshotUpdate.swift */,
 			);
-			name = "Diffable Container View Models";
 			path = "Diffable Container View Models";
 			sourceTree = "<group>";
 		};
@@ -388,7 +387,6 @@
 				B74FD26F535C78C2F476F48B1724C49D /* TableViewViewModelOwner.swift */,
 				3B72C2A3EB97AC1E84ECB5E54C0B635F /* Container View Models */,
 			);
-			name = Delegate;
 			path = Delegate;
 			sourceTree = "<group>";
 		};
@@ -531,6 +529,7 @@
 				0E4DC19E27F6F3A0D695A9224F44933D /* MVVMCollectionViewDiffableDataSource.swift in Sources */,
 				AB00FF2B12C898BD4730439F6F2ED3DB /* MVVMDiffableCollectionViewController+CompositionalLayout.swift in Sources */,
 				28A8C60549B3DCB657DBE2458A351146 /* MVVMDiffableCollectionViewController.swift in Sources */,
+				2D28F3EA2547376D006A2312 /* SectionSnapshotUpdate.swift in Sources */,
 				BA9E84B52E0553E4883524DE2E22029D /* MVVMDiffableTableViewController.swift in Sources */,
 				11D94C9D0FCDD77B5DD22E188F315018 /* MVVMKit-dummy.m in Sources */,
 				0DFEDC071E7DEDBC82299C422B0231E5 /* MVVMTableViewController.swift in Sources */,
@@ -664,8 +663,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

@@ -46,7 +46,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
         MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.self
     }
     
-    private var dataSourceSubscription: AnyCancellable?
+    private var subscriptions: Set<AnyCancellable> = .init()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +55,31 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     }
     
     open func bind(viewModel: ViewModelType) {
-        dataSourceSubscription = viewModel.snapshot
+        subscriptions.removeAll()
+
+        viewModel.snapshot
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
-                self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
+                self?.dataSource.apply(snapshotAdapter.snapshot,
+                                       animatingDifferences:
+                                        snapshotAdapter.animated,
+                                       completion: snapshotAdapter.completion)
             }
+            .store(in: &subscriptions)
+
+        guard #available(iOS 14, *) else {
+            return
+        }
+
+        viewModel.sectionSnapshot
+            .receive(on: DispatchQueue.diffingQueue)
+            .sink { [weak self] sectionSnapshotAdapter in
+                self?.dataSource.apply(sectionSnapshotAdapter.snapshot,
+                                       to: sectionSnapshotAdapter.section,
+                                       animatingDifferences: sectionSnapshotAdapter.animated,
+                                       completion: sectionSnapshotAdapter.completion)
+            }
+            .store(in: &subscriptions)
     }
     
     private func setupDataSource() {
