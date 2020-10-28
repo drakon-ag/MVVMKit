@@ -11,18 +11,17 @@ import MVVMKit
 
 @available(iOS 14.0, *)
 struct AdvancedSnapshotingCellViewModel: ReusableViewViewModel {
-    var identifier: String {
-        .init(describing: AdvancedSnapshotingCell.self)
-    }
+    let identifier: String = .init(describing: AdvancedSnapshotingCell.self)
 
     let text: String
+    let isExpandable: Bool
 }
 
 @available(iOS 14.0, *)
 final class AdvancedSnapshotingCell: UICollectionViewListCell, CustomBinder {
     func bind(viewModel: AdvancedSnapshotingCellViewModel) {
         var content = defaultContentConfiguration()
-        accessories = [.outlineDisclosure()]
+        accessories = viewModel.isExpandable ? [.outlineDisclosure()] : []
         content.text = viewModel.text
         contentConfiguration = content
     }

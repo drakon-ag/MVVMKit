@@ -35,18 +35,17 @@ final class AdvancedSnapshotingViewModel: DiffableCollectionViewViewModel {
         snapshot.appendSections([.main])
         snapshotSubject.send(snapshot.adapted())
 
-        let viewModels = model.map {
-            AdvancedSnapshotingCellViewModel(text: $0)
-                .adapted(hashable: $0)
+        let viewModels = model.enumerated().map { index, value in
+            AdvancedSnapshotingCellViewModel(text: value, isExpandable: index == 0)
+                .adapted(hashable: value)
         }
 
         // section snapshot
-        let rootItem = viewModels.first!
+        let rootItem = viewModels[0]
         let others = Array(viewModels[1...])
         var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<ReusableViewViewModelAdapter>()
         sectionSnapshot.append([rootItem])
         sectionSnapshot.append(others, to: rootItem)
         sectionSnapshotSubject.send(sectionSnapshot.adapted(section: .main))
-        //
     }
 }
